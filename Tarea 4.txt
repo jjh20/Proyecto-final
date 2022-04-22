@@ -1,0 +1,202 @@
+package Paq.log;
+
+public class Usuarios {
+	//LOGIN DEL USUARIO = REGISTRADO POR EL ADMIN 
+    //
+    //
+    //
+    //
+
+
+public class inicio extends AbsScan implements interVariables {
+   public static void main(String[] arg){
+       inicio i=new inicio();
+       i.menu();
+   }
+   public void menu(){
+       // Login Admin   
+       System.out.println("Bienvenidos");
+       System.out.println("Usuario:");
+       String u=super.scanLine();
+       System.out.println("Clave:");
+       String c=super.scanLine();
+
+       if(u.equals(usuario) && c.equals(clave)){
+          menuAdministrador();
+       }else{
+           System.out.println("debe ingresar su usuario \r\n"
+           		+ "y contraseña, si no está registrado debe registrarse.");
+           menu();
+       }
+
+   }
+       private void menuAdministrador(){
+          // Menu Admin   
+           System.out.println("Bienvenido administrador");
+           System.out.println("1. para crear Usuarios.");
+           System.out.println("2. para consulta de Usarios.");
+           System.out.println("3. para actulizar datos de Usuarios.");
+           System.out.println("4. para eliminar informacion de Usuarios.");
+           System.out.println("5. Login Usuario.");
+           // seleciono la opción
+           switch(super.scanInt()){
+               case 1:
+                   Iniciar seccion();
+                   break;
+               case 2:
+                   Entrar como invictado();
+                   break;
+               case 3:
+                  Registrarse();
+                   break;
+               case 4:
+                   eliminarUsuarios();
+                   break;
+               case 5:
+                   menuUsuario();
+               default:
+           }
+
+       }
+
+   private void registroUsuarios() {
+      // Registar Usuario   
+       System.out.println("Cantidad de usuarios");
+       int x=super.scanInt();
+       for(int i=1;i<=x;i++){
+       Usuario usu=new Usuario();
+       System.out.println("ID:");
+       usu.setId(super.scanLine());
+       System.out.println("Documento:");
+       usu.setDocumento(super.scanLong());
+       System.out.println("Nombre:");
+       usu.setNombre(super.scanLine());
+       System.out.println("Apellido:");
+       usu.setApellido(super.scanLine());
+       System.out.println("Usuario:");
+       usu.setUsuario(super.scanLine());
+       System.out.println("Clave:");
+       usu.setClave(super.scanLine());
+       listaUsuario.add(usu);
+       }
+       menuAdministrador();
+   }
+
+
+private void consultaUsuarios() {
+    // Consultar Usuario  
+       Iterator<Usuario> nombreIterator = listaUsuario.iterator();
+       while (nombreIterator.hasNext()) {
+           Usuario elementoUsuario = nombreIterator.next();
+           System.out.println("Usuarios Ingresados");
+           System.out.print(elementoUsuario.getId() + " | ");
+           System.out.print(elementoUsuario.getDocumento() + " | ");
+           System.out.print(elementoUsuario.getNombre() + " | ");
+           System.out.print(elementoUsuario.getUsuario() + " | ");
+           System.out.print(elementoUsuario.getClave() + " | ");
+           System.out.println("");
+       }
+       menuAdministrador();
+   }
+
+private void actualizarUsuarios() {
+  // Si la contraseña y el usuario no coinciden  
+   System.out.println("Error");
+   String a=super.scanLine();
+
+       for (int i = 0; i < listaUsuario.size(); i++) {
+       if (a.equals(listaUsuario.get(i).id)) {
+
+           Usuario elementoUsuario = listaUsuario.get(i);
+           System.out.println("Cambiar Documento:");
+           elementoUsuario.setDocumento(super.scanLong());
+           System.out.println("Cambiar Nombre:");
+           elementoUsuario.setNombre(super.scanLine());
+           System.out.println("Cambiar Apellido:");
+           elementoUsuario.setApellido(super.scanLine());
+           System.out.println("Cambiar Usuario:");
+           elementoUsuario.setUsuario(super.scanLine());
+           System.out.println("Cambiar Clave:");
+           elementoUsuario.setClave(super.scanLine());
+       }else{
+       System.out.println("ID que digito no existe, intente de nuevo");
+       menuAdministrador();
+       }
+   }
+       menuAdministrador();
+   }
+
+
+private void eliminarUsuarios(){
+
+   //Eliminar Usuario
+    System.out.println("Digitar correo electronico");
+    String e=super.scanLine();
+
+    for (int i = 0; i < listaUsuario.size(); i++) {
+    if (e.equals(listaUsuario.get(i).id)) {
+
+        Usuario elementoUsuario = listaUsuario.get(i);
+        listaUsuario.remove(i);
+
+
+        }else{
+        System.out.println("Error");
+        menuAdministrador();
+    }
+    }
+
+   menuAdministrador();
+
+          }
+
+private void menuUsuario(){
+    // Menu Usuario   
+
+    //LOGIN DEL USUARIO = REGISTRADO POR EL ADMIN 
+    //
+    //
+    //
+    //
+
+
+           System.out.println("Bienvenido Usuario");
+           System.out.println("1. Usuario registrado.");
+           System.out.println("2. Usuario no registrado.");
+           System.out.println("3. Crear un usuario.");
+
+           // seleciono la opción
+           switch(super.scanInt()){
+               case 1:
+                   Iniciar seccion();
+                   break;
+               case 2:
+                   Entrar como invictado();
+                   break;
+               case 3:
+                   Registrarse();
+                   break;
+
+               default:
+           }
+
+       }
+
+   private void Iniciar sección() {
+
+   menuUsuario();
+}
+
+
+   private void Entrar como invictado() {
+
+   menuUsuario();
+
+}
+
+   private void Registrarse(){
+
+   }
+
+}
+}   
